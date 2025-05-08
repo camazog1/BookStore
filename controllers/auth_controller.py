@@ -3,8 +3,16 @@ from models.user import User
 from extensions import db
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
 
 auth = Blueprint('auth', __name__)
+
+# Configuración para la carga de archivos en el EFS
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
+auth.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,6 +36,13 @@ def register():
         new_user = User(name=name, email=email, password=generate_password_hash(password, method='pbkdf2:sha256'))
         db.session.add(new_user)
         db.session.commit()
+       
+        if 'file' in request.files:
+            file = request.files['file']
+            if file:
+                file_path = os.path.join(auth.config['UPLOAD_FOLDER'], file.filename)
+                file.save(file_path)
+        
         return redirect(url_for('auth.login'))
     return render_template('register.html')
 

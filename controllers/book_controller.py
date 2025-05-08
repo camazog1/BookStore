@@ -1,18 +1,18 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from models.book import Book
-
 from extensions import db
-#from app import db
 from flask_login import login_required, current_user
+import os
 
 book = Blueprint('book', __name__)
 
-#@book.route('/')
-#@login_required
-#def home():
-#    return render_template('home.html')
+# Configuración de la carpeta de uploads
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
+book.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-#@book.route('/')
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 @book.route('/catalog')
 def catalog():
     books = Book.query.all()
@@ -33,10 +33,26 @@ def add_book():
         description = request.form.get('description')
         price = float(request.form.get('price'))
         stock = int(request.form.get('stock'))
-        new_book = Book(title=title, author=author, description=description, price=price, stock=stock, seller_id=current_user.id)
+
+        if 'cover_image' in request.files:
+            cover_image = request.files['cover_image']
+            if cover_image:
+                filename = os.path.join(book.config['UPLOAD_FOLDER'], cover_image.filename)
+                cover_image.save(filename)
+        
+        new_book = Book(
+            title=title,
+            author=author,
+            description=description,
+            price=price,
+            stock=stock,
+            seller_id=current_user.id,
+            cover_image=filename if 'cover_image' in locals() else None 
+        )
         db.session.add(new_book)
         db.session.commit()
         return redirect(url_for('book.catalog'))
+    
     return render_template('add_book.html')
 
 @book.route('/edit_book/<int:book_id>', methods=['GET', 'POST'])
@@ -52,6 +68,15 @@ def edit_book(book_id):
         book_to_edit.description = request.form.get('description')
         book_to_edit.price = float(request.form.get('price'))
         book_to_edit.stock = int(request.form.get('stock'))
+
+
+        if 'cover_image' in request.files:
+            cover_image = request.files['cover_image']
+            if cover_image:
+                filename = os.path.join(book.config['UPLOAD_FOLDER'], cover_image.filename)
+                cover_image.save(filename)
+                book_to_edit.cover_image = filename
+
         db.session.commit()
         return redirect(url_for('book.catalog'))
 

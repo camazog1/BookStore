@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from config import Config
 from extensions import db, login_manager
 from models.user import User
+import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -41,6 +42,12 @@ def initialize_delivery_providers():
             ]
             db.session.bulk_save_objects(providers)
             db.session.commit()
+
+UPLOAD_FOLDER = '/app/uploads' 
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 @app.route('/')
 def home():
