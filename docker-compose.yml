@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: ./Microservices/auth-service
+    ports:
+      - "5001:5001"
+    networks:
+      - bookstore_net
+
+  catalog-service:
+    build:
+      context: ./Microservices/catalog-service
+    ports:
+      - "5002:5002"
+    networks:
+      - bookstore_net
+
+  transaction-service:
+    build:
+      context: ./Microservices/transaction-service
+    ports:
+      - "5003:5003"
+    networks:
+      - bookstore_net
+
+  api-gateway:
+    build:
+      context: ./api_gateway
+    ports:
+      - "5000:5000"
+    depends_on:
+      - auth-service
+      - catalog-service
+      - transaction-service
+    networks:
+      - bookstore_net
+
+networks:
+  bookstore_net:

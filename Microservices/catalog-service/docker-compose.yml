@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  catalog-service:
+    build: .
+    restart: always
+    ports:
+      - "5002:5002"
+    networks:
+      - catalog_net
+
+networks:
+  catalog_net:
