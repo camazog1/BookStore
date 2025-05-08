@@ -17,4 +17,4 @@ services:
 
 networks:
   bookstore_net:
-    external: true  # Asumimos que ya la usaste en los otros servicios
+    external: true  

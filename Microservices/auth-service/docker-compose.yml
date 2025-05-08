@@ -10,4 +10,5 @@ services:
       - auth_net
 
 networks:
-  auth_net:
+  bookstore_net:
+    external: true

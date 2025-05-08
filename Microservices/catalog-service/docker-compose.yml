@@ -10,4 +10,5 @@ services:
       - catalog_net
 
 networks:
-  catalog_net:
+  bookstore_net:
+    external: true

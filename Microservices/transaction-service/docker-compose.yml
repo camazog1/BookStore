@@ -10,4 +10,5 @@ services:
       - transaction_net
 
 networks:
-  transaction_net:
+  bookstore_net:
+    external: true
