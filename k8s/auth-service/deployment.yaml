@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth-service
-          image: sebastianjimenez30/auth-service:latest  # Usa tu imagen desde Docker Hub
+          image: sebastianjimenez30/auth-service:latest  # Imagen de Docker Hub
           ports:
             - containerPort: 5001
           env:

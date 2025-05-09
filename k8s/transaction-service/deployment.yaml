@@ -19,6 +19,9 @@ spec:
             - containerPort: 5003
           env:
             - name: FLASK_ENV
-              value: development
+              value: production
             - name: DB_URL
-              value: mysql+pymysql://bookstore_user:bookstore_pass@mysql-service/bookstore
+              valueFrom:
+                secretKeyRef:
+                  name: transaction-secrets
+                  key: db-url

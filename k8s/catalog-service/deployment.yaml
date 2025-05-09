@@ -19,8 +19,11 @@ spec:
             - containerPort: 5002
           env:
             - name: FLASK_ENV
-              value: "development"
+              value: "production"
             - name: JWT_SECRET_KEY
               value: "supersecretkey"
             - name: DATABASE_URL
-              value: "mysql+pymysql://bookstore_user:bookstore_pass@mysql-service:3306/bookstore"
+              valueFrom:
+                secretKeyRef:
+                  name: catalog-secrets
+                  key: db-uri
