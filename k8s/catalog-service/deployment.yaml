@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog-service
+  template:
+    metadata:
+      labels:
+        app: catalog-service
+    spec:
+      containers:
+        - name: catalog
+          image: sebastianjimenez30/catalog-service:latest
+          ports:
+            - containerPort: 5002
+          env:
+            - name: FLASK_ENV
+              value: "development"
+            - name: JWT_SECRET_KEY
+              value: "supersecretkey"
+            - name: DATABASE_URL
+              value: "mysql+pymysql://bookstore_user:bookstore_pass@mysql-service:3306/bookstore"

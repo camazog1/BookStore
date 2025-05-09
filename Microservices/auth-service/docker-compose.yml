@@ -7,7 +7,7 @@ services:
     ports:
       - "5001:5001"
     networks:
-      - auth_net
+      - bookstore_net
 
 networks:
   bookstore_net:

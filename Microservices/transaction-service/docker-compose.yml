@@ -7,7 +7,7 @@ services:
     ports:
       - "5003:5003"
     networks:
-      - transaction_net
+      - bookstore_net
 
 networks:
   bookstore_net:

@@ -7,7 +7,7 @@ services:
     ports:
       - "5002:5002"
     networks:
-      - catalog_net
+      - bookstore_net
 
 networks:
   bookstore_net:
