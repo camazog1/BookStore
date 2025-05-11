@@ -39,3 +39,4 @@ services:
 
 networks:
   bookstore_net:
+    external: true

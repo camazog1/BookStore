@@ -8,13 +8,13 @@ services:
       - "5000:5000"
     volumes:
       - .:/app
-    networks:
-      - bookstore_net
     depends_on:
       - auth-service
       - catalog-service
       - transaction-service
+    networks:
+      - bookstore_net
 
 networks:
   bookstore_net:
-    external: true  
+    external: true
