@@ -63,7 +63,7 @@ cd Microsevices/api\_gateway
 
 ---
 
-## bien puedes utilizar tu usua🌐 3. Creación de Instancias en AWS
+## 🌐 3. Creación de Instancias en AWS
 
 Debes crear 4 instancias EC2:
 
