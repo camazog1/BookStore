@@ -5,13 +5,13 @@
 
 ---
 
-## 🧾 Descripción general
+## Descripción general
 
 BookStore es una aplicación monolítica desarrollada en Flask que simula un sistema de ecommerce de libros de segunda mano, donde los usuarios pueden autenticarse, publicar, comprar, pagar y simular la entrega de libros. Este proyecto consiste en desplegar la aplicación de forma escalable en la nube (AWS), siguiendo tres objetivos específicos.
 
 ---
 
-## ✅ Objetivo 1 – Despliegue de la aplicación monolítica en una VM (20%)
+## Objetivo 1 – Despliegue de la aplicación monolítica en una VM (20%)
 
 - Se utilizó una instancia EC2 en AWS (Ubuntu 22.04).
 - Se desplegó la aplicación BookStore monolítica usando Docker y Docker Compose.
@@ -19,7 +19,7 @@ BookStore es una aplicación monolítica desarrollada en Flask que simula un sis
 
 ---
 
-## ✅ Objetivo 2 – Escalamiento monolítico con infraestructura en la nube (30%)
+## Objetivo 2 – Escalamiento monolítico con infraestructura en la nube (30%)
 
 - Se creó una imagen AMI de la instancia BookStore original.
 - Se implementó un Auto Scaling Group con al menos dos instancias EC2.
@@ -30,26 +30,25 @@ BookStore es una aplicación monolítica desarrollada en Flask que simula un sis
 
 ---
 
-## 📦 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - Python 3 + Flask
 - Docker + Docker Compose
 - NGINX
 - AWS EC2, RDS, ELB, EFS
-- Certbot + Let's Encrypt
 - GitHub
 
 ---
 
-## 🔀 Objetivo 3 – Microservicios (50%)
+## Objetivo 3 – Microservicios (50%)
 
 Para el desarrollo del Objetivo 3, que consiste en dividir la aplicación en microservicios (`auth`, `catalog`, `transaction`):
 
-👉 [`BookStoreMicroservices`](https://github.com/camazog1/BookStore/tree/BookStoreMicroservices)
+ [`BookStoreMicroservices`](https://github.com/camazog1/BookStore/tree/BookStoreMicroservices)
 
 ---
 
-## 👥 Autores
+## Autores
 
 - Carlos Mazo  
 - Anderson Jimenez
