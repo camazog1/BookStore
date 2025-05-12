@@ -45,7 +45,7 @@ BookStore es una aplicación monolítica desarrollada en Flask que simula un sis
 
 Para el desarrollo del Objetivo 3, que consiste en dividir la aplicación en microservicios (`auth`, `catalog`, `transaction`):
 
-👉 [`BookStoreMicroservices`](https://https://github.com/camazog1/BookStore/tree/BookStoreMicroservices)
+👉 [`BookStoreMicroservices`](https://github.com/camazog1/BookStore/tree/BookStoreMicroservices)
 
 ---
 
