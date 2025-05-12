@@ -39,6 +39,9 @@ BookStore es una aplicación monolítica desarrollada en Flask que simula un sis
 - GitHub
 
 ---
+## Dominio de la aplicacion:
+http://mybookstore.space/
+---
 
 ## Objetivo 3 – Microservicios (50%)
 
